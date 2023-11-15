@@ -1,16 +1,18 @@
 <script setup>
 import NavBar from "./components/NavBar.vue";
-import TacheList from "./components/TacheList.vue";
 </script>
 
 <template>
   <NavBar />
-  <main>
-    <TacheList />
+  <main class="container">
+    <router-view></router-view>
   </main>
 </template>
 
 <style>
+* {
+  font-family: "Roboto", sans-serif;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -139,5 +141,12 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 24px 16px;
+  margin-top: 76px;
 }
 </style>

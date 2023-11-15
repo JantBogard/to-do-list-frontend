@@ -25,13 +25,14 @@
 
 <style scoped>
 .card-tache {
-  width: 100%;
   display: flex;
   gap: 16px;
   align-items: center;
-  padding: 16px;
+  padding: 16px 24px;
   background-color: #c8e6c9;
   border-radius: 8px;
+  transition: all 0.5s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .card-info-tache {
@@ -43,5 +44,26 @@
 .card-libelle-tache {
   font-size: 20px;
   font-weight: 700;
+}
+
+.card-descrip-tache {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-favoris-tache {
+  margin-left: auto;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.card-favoris-tache:hover,
+.active {
+  color: #448aff;
+}
+
+.card-valid-tache input {
+  width: 20px;
+  height: 20px;
 }
 </style>

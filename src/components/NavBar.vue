@@ -2,22 +2,22 @@
   <nav>
     <ul>
       <li>
-        <a href="#">
+        <router-link class="link" to="/mestache">
           Mes tâches
           <span>2</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link class="link" to="/mesfavoris">
           Favoris
           <span>3</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link class="link" to="/tacheeffectuer">
           Tâches effectués
           <span>4</span>
-        </a>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -28,6 +28,9 @@ nav {
   padding: 16px 12px;
   background-color: #4caf50;
   color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 ul {
@@ -35,7 +38,8 @@ ul {
   gap: 10px;
 }
 
-a {
+.link {
+  font-family: "Roboto", sans-serif;
   padding: 12px;
   color: #ffffff;
   text-decoration: none;
@@ -45,9 +49,11 @@ a {
   display: flex;
   gap: 8px;
   align-items: center;
+  font-weight: 400;
+  border-radius: 8px;
 }
 
-a:hover {
+.link:hover {
   background-color: #388e3c;
 }
 
