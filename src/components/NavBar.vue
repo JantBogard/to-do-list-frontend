@@ -4,25 +4,43 @@
       <li>
         <router-link class="link" to="/mestache">
           Mes tâches
-          <span>2</span>
+          <span>{{ countTache }}</span>
         </router-link>
       </li>
       <li>
         <router-link class="link" to="/mesfavoris">
           Favoris
-          <span>3</span>
+          <span>{{ countFavoris }}</span>
         </router-link>
       </li>
       <li>
         <router-link class="link" to="/tacheeffectuer">
           Tâches effectués
-          <span>4</span>
+          <span>{{ countTacheOver }}</span>
         </router-link>
       </li>
     </ul>
   </nav>
 </template>
-<script setup></script>
+<script setup>
+import { onMounted, ref } from "vue";
+import axios from "axios";
+
+const countTache = ref(0);
+const countFavoris = ref(0);
+const countTacheOver = ref(0);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/tache/count");
+    countTache.value = response.data.countTache;
+    countFavoris.value = response.data.countFavoris;
+    countTacheOver.value = response.data.countTacheOver;
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
 <style scoped>
 nav {
   padding: 16px 12px;

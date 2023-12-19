@@ -4,8 +4,8 @@
       <input type="checkbox" />
     </div>
     <div class="card-info-tache">
-      <h2 class="card-libelle-tache">Test libelle</h2>
-      <p class="card-descrip-tache">Descripition de la tache</p>
+      <h2 class="card-libelle-tache">{{ tache.libelle }}</h2>
+      <p class="card-descrip-tache">{{ tache.description }}</p>
     </div>
     <div class="card-favoris-tache">
       <svg
@@ -22,6 +22,16 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import Tache from "../models/tache";
+import { defineProps } from "vue";
+
+// eslint-disable-next-line no-unused-vars
+const props = defineProps({
+  tache: Tache,
+});
+</script>
 
 <style scoped>
 .card-tache {

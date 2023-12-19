@@ -1,22 +1,38 @@
 <template>
   <div class="form-container">
     <h1 class="form-title">Ajouter une tache</h1>
-    <form>
+    <form @submit.prevent="submit">
       <div class="input-group">
         <label class="input-label" for="libelle">Libelle</label>
-        <input class="input-field" type="text" id="libelle" />
+        <input
+          v-model="tacheModel.libelle"
+          class="input-field"
+          type="text"
+          id="libelle"
+        />
       </div>
       <div class="input-group">
         <label class="input-label" for="dateDebut">Date debut</label>
-        <input class="input-field" type="date" id="dateDebut" />
+        <input
+          v-model="tacheModel.dateDebut"
+          class="input-field"
+          type="date"
+          id="dateDebut"
+        />
       </div>
       <div class="input-group">
         <label class="input-label" for="dateFin">Date fin</label>
-        <input class="input-field" type="date" id="dateFin" />
+        <input
+          v-model="tacheModel.dateFin"
+          class="input-field"
+          type="date"
+          id="dateFin"
+        />
       </div>
       <div class="input-group">
         <label class="input-label" for="description">Description</label>
         <textarea
+          v-model="tacheModel.description"
           class="input-field"
           id="description"
           cols="30"
@@ -24,12 +40,36 @@
         ></textarea>
       </div>
       <div class="form-action">
-        <button class="cancel-btn">Annuler</button>
-        <button class="valid-btn">Enregistrer</button>
+        <button type="reset" class="cancel-btn">Annuler</button>
+        <button type="submit" class="valid-btn">Enregistrer</button>
       </div>
     </form>
   </div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+
+const tacheModel = ref({
+  libelle: "",
+  dateDebut: new Date(),
+  dateFin: new Date(),
+  description: "",
+});
+
+const submit = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/tache",
+      tacheModel.value
+    );
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+</script>
 
 <style scoped>
 .form-container {

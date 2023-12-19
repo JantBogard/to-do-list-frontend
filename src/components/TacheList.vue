@@ -1,15 +1,17 @@
 <template>
   <div class="card-list">
-    <TacheUnit />
-    <TacheUnit />
-    <TacheUnit />
-    <TacheUnit />
-    <TacheUnit />
+    <TacheUnit v-for="tache in taches" :key="tache.id" :tache="tache" />
   </div>
 </template>
 
 <script setup>
 import TacheUnit from "./TacheUnit";
+import { defineProps } from "vue";
+
+// eslint-disable-next-line no-unused-vars
+const props = defineProps({
+  taches: new Array(),
+});
 </script>
 
 <style scoped>
